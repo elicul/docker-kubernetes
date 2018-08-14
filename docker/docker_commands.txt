@@ -5,6 +5,7 @@ docker-machine env [container id]
 docker-machine ip [container id]
 
 docker ps -a
+docker ps 
 docker pull [image name]
 docker rmi [image id]
 docker rm [container id]
@@ -15,3 +16,4 @@ docker run -p [port 8080:80] -v $(pwd):/var/wwww -w "/var/www" [image name] [com
 docker run -it --rm -p 8000:80 --name aspnetcore_sample microsoft/dotnet-samples:aspnetapp
 docker inspect mycontainer
 docker images
+docker build -f dockerFile -t <username>/node .
