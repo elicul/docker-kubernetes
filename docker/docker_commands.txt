@@ -8,5 +8,10 @@ docker ps -a
 docker pull [image name]
 docker rmi [image id]
 docker rm [container id]
+docker rm -v [container id]
 docker run [image name] -p [port 8080:80]
+docker run [image name] -p [port 8080:80] -v [value folder] $(pwd):/var/wwww
+docker run -p [port 8080:80] -v $(pwd):/var/wwww -w "/var/www" [image name] [command] npm start
+docker run -it --rm -p 8000:80 --name aspnetcore_sample microsoft/dotnet-samples:aspnetapp
+docker inspect mycontainer
 docker images
