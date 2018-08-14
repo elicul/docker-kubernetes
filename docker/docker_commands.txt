@@ -1,0 +1,12 @@
+docker-machine ls
+docker-machine start [container id]
+docker-machine stop [container id]
+docker-machine env [container id]
+docker-machine ip [container id]
+
+docker ps -a
+docker pull [image name]
+docker rmi [image id]
+docker rm [container id]
+docker run [image name] -p [port 8080:80]
+docker images
