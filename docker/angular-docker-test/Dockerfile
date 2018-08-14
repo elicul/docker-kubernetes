@@ -1,8 +1,11 @@
-FROM node:8.1.2-onbuild as builder
-ARG TARGET=production
-RUN npm install @angular/cli
-RUN node_modules/.bin/ng build -aot --target ${TARGET}
+FROM node as builder
 
-FROM nginx:1.13-alpine
+COPY . /home/angular
+
+RUN cd /home/angular && npm install -g @angular/cli && npm install && ng build --prod
+
+FROM nginx
+
 COPY nginx.conf /etc/nginx/conf.d/
-COPY --from=builder /usr/src/app/dist /usr/src/app
+
+COPY --from=builder /home/angular/dist /usr/src/app
