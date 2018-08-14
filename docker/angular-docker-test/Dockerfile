@@ -2,10 +2,6 @@ FROM node as builder
 
 COPY . /home/angular
 
-RUN cd /home/angular && npm install -g @angular/cli && npm install && ng build --prod
+EXPOSE 4200
 
-FROM nginx
-
-COPY nginx.conf /etc/nginx/conf.d/
-
-COPY --from=builder /home/angular/dist /usr/src/app
+RUN cd /home/angular && npm install -g @angular/cli && npm install && ng serve --prod
