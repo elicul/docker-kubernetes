@@ -1,7 +1,10 @@
-FROM node as builder
+FROM node:latest
 
 COPY . /home/angular
+WORKDIR /home/angular
+
+RUN npm install -g @angular/cli && npm install
 
 EXPOSE 4200
 
-RUN cd /home/angular && npm install -g @angular/cli && npm install && ng serve --prod
+ENTRYPOINT ["npm", "start"]
