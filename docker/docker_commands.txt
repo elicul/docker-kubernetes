@@ -7,6 +7,7 @@ docker-machine ip [container id]
 docker ps -a
 docker ps 
 docker pull [image name]
+docker push [username]/[image name] --> before docker login
 docker rmi [image id]
 docker rm [container id]
 docker rm -v [container id]
@@ -17,5 +18,8 @@ docker run -it --rm -p 8000:80 --name aspnetcore_sample microsoft/dotnet-samples
 docker inspect mycontainer
 docker images
 docker build -f dockerFile -t <username>/node .
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 
 **Portainer
