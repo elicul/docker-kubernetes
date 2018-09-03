@@ -1,12 +1,16 @@
 FROM microsoft/dotnet:latest
 
-COPY . /home/WorkflowBuilder/
-COPY NuGet.Config /home/WorkflowBuilder
+ENV MS_NAME=hello_world
+ENV PORT=5000
 
-WORKDIR /home/WorkflowBuilder/EBE.Ships.WorkflowBuilder.Core.API
+ADD ${MS_NAME} /opt/${MS_NAME}
+ADD appsettings.json /opt/${MS_NAME}
+ADD NuGet.Config /opt/${MS_NAME}
+
+WORKDIR /opt/${MS_NAME}
 
 RUN dotnet restore && dotnet build
 
-EXPOSE 8080
+EXPOSE ${PORT}
 
-ENTRYPOINT ["dotnet", "run", "--urls", "http://0.0.0.0:8080"]
+ENTRYPOINT ["dotnet", "run"]
