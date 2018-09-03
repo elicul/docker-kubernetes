@@ -1,0 +1,9 @@
+hello_world:
+  build: ./hello_world
+  ports:
+    - "5001:5000"
+
+hello_world_2:
+  build: ./hello_world_2
+  ports:
+    - "5002:5000"
