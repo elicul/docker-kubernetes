@@ -17,6 +17,7 @@ minikube version
 minikube start
 minikube stop && minikube start --cpus 2 --memory 4048 
 minikube dashboard --url
+minikube ip
 
 kubectl get nodes
 kubectl create -f pod.yml
@@ -24,3 +25,6 @@ kubectl apply -f pod.yml
 kubectl get pods
 kubectl describe pods
 kubectl delete pods hello-pod
+kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort
+kubectl describe svc hello-svc
+kubectl get ep => external ports

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  hello-svc
+spec:
+  selector:
+    app:  hello-world
+  type:  NodePort
+  ports:
+  - port:  8080
+    nodePort:  30001
+    protocol: TCP

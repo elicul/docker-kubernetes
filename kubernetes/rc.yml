@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: hello-rc
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     app: hello-world
   template:
