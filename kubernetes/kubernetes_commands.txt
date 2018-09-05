@@ -1,15 +1,26 @@
-Installation
+sudo apt-get update
+sudo apt-get install apt-transport-https
+sudo apt-get upgrade
 
-choco install docker-for-windows -y
-bcdedit /set hypervisorlaunchtype auto
-docker ps
+sudo apt install virtualbox virtualbox-ext-pack
 
-choco install minikube -y
-Get-NetAdapter
-New-VMSwitch –Name "minikube" –AllowManagement $True –NetAdapterName "INSERT_HERE_ADAPTER" //Up status in column
-minikube start --vm-driver=hyperv --hyperv-virtual-switch=minikube
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O  /usr/local/bin/minikube
+chmod +x /usr/local/bin/minikube
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt-get update
+sudo apt-get install -y kubectl
+-------------------------------------------------------------------------
 
 minikube version
-minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
+minikube start
+minikube stop && minikube start --cpus 2 --memory 4048 
+minikube dashboard --url
 
 kubectl get nodes
+kubectl create -f pod.yml
+kubectl apply -f pod.yml
+kubectl get pods
+kubectl describe pods
+kubectl delete pods hello-pod
