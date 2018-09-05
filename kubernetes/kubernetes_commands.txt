@@ -28,3 +28,9 @@ kubectl delete pods hello-pod
 kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort
 kubectl describe svc hello-svc
 kubectl get ep => external ports
+
+kubectl apply -f deploy.yml --record
+kubectl rollout status deployment hello-deploy
+kubectl rollout history deployment hello-deploy
+
+kubectl rollout undo deployment hello-deploy --to-revision=1 //1 from kubectl rollout history deployment hello-deploy
